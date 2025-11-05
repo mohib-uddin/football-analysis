@@ -1,0 +1,336 @@
+# ==========================================
+# FieldCoachAI - Git Ignore File
+# ==========================================
+# This file ensures no sensitive or unnecessary files are pushed to GitHub
+
+# ==========================================
+# Python
+# ==========================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+.conda/
+
+# ==========================================
+# Environment & Secrets
+# ==========================================
+# Environment variables (CONTAINS API KEYS!)
+# Exclude .env files in root AND all subdirectories
+.env
+.env.local
+.env.*.local
+*.env
+.envrc
+**/.env
+**/.env.local
+**/.env.*
+api/.env
+api/.env.local
+api/.env.*
+
+# API Keys and secrets
+secrets.json
+config.json
+credentials.json
+*.key
+*.pem
+
+# ==========================================
+# IDE & Editor Files
+# ==========================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# ==========================================
+# OS Files
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ==========================================
+# Large Model Files (DO NOT COMMIT)
+# ==========================================
+# PyTorch models
+*.pt
+*.pth
+*.pth.tar
+*.ckpt
+
+# TensorFlow models
+*.pb
+*.h5
+*.hdf5
+*.tflite
+
+# Other model formats
+*.t7
+*.weights
+*.model
+*.onnx
+
+# Model directories (if large)
+models/
+checkpoints/
+saved_models/
+
+# ==========================================
+# Video Files (Large - DO NOT COMMIT)
+# ==========================================
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.webm
+*.m4v
+*.3gp
+*.ogv
+*.ts
+*.mpg
+*.mpeg
+*.vob
+
+# Video directories
+temp/
+videos/
+video_uploads/
+video_output/
+output/
+
+# ==========================================
+# Audio Files (Large)
+# ==========================================
+*.wav
+*.mp3
+*.flac
+*.aac
+*.ogg
+*.wma
+*.m4a
+
+# ==========================================
+# Image Files (Large - Optional)
+# ==========================================
+# Uncomment if you don't want to commit images
+# *.jpg
+# *.jpeg
+# *.png
+# *.gif
+# *.bmp
+# *.tiff
+# *.svg
+
+# ==========================================
+# Data Files (Large)
+# ==========================================
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+*.hdf5
+*.h5
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# ==========================================
+# Logs & Temporary Files
+# ==========================================
+*.log
+*.log.*
+logs/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.swp
+*.swo
+
+# Application specific
+*.out
+*.err
+
+# ==========================================
+# Project Specific
+# ==========================================
+# Temporary directories
+temp/
+tmp/
+output/
+outputs/
+results/
+inference/output/
+
+# API specific
+api/temp/
+api/output/
+api/__pycache__/
+api/**/__pycache__/
+
+# Bird's eye view specific
+Bird's eye view/weights/*.pt
+Bird's eye view/weights/*.t7
+Bird's eye view/inference/output/
+Bird's eye view/__pycache__/
+
+# Keep weight directories but ignore model files
+!Bird's eye view/weights/
+!Bird's eye view/weights/.gitkeep
+
+# ==========================================
+# Documentation Build
+# ==========================================
+docs/_build/
+docs/.doctrees/
+site/
+
+# ==========================================
+# Python Package Files
+# ==========================================
+*.whl
+*.tar.gz
+
+# ==========================================
+# Compiled Files
+# ==========================================
+*.o
+*.a
+*.lib
+*.dll
+*.exe
+*.bin
+
+# ==========================================
+# Special Files
+# ==========================================
+# Keep .gitkeep files to preserve empty directories
+!**/.gitkeep
+
+# ==========================================
+# Node.js (if using any JS tools)
+# ==========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ==========================================
+# Docker (if using)
+# ==========================================
+.dockerignore
+
+# ==========================================
+# Notes
+# ==========================================
+# Model files (*.pt, *.pth, *.t7) are large and should be downloaded separately
+# Video files are large and should not be committed
+# Environment files (.env) contain sensitive API keys - NEVER commit
+# Use git-lfs for large files if needed: https://git-lfs.github.com/
+

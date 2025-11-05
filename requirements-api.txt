@@ -1,0 +1,82 @@
+# FieldCoachAI Core AI API - Complete Requirements
+# Install with: py -m pip install -r requirements-api.txt
+
+# ==========================================
+# Core FastAPI Framework
+# ==========================================
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# ==========================================
+# Data Validation & Settings
+# ==========================================
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# ==========================================
+# OpenAI for AI Grading
+# ==========================================
+openai>=1.12.0  # Updated for compatibility with httpx 0.28+
+
+# ==========================================
+# Computer Vision Libraries
+# ==========================================
+# Note: torch/torchvision are large downloads
+# If installation fails due to timeout, install separately:
+#   py -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+opencv-python>=4.5.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# ==========================================
+# Scientific Computing
+# ==========================================
+numpy==1.23.5  # Pin to 1.23.5 for compatibility with np.float and np.int aliases
+scipy>=1.7.0
+Pillow>=9.0.0
+
+# ==========================================
+# Utilities
+# ==========================================
+python-dotenv==1.0.0
+requests>=2.28.0
+aiofiles==23.2.1
+
+# ==========================================
+# Visualization & Plotting
+# ==========================================
+matplotlib>=3.5.0
+seaborn>=0.12.0
+pandas>=1.3.0
+
+# ==========================================
+# Configuration & YAML
+# ==========================================
+PyYAML>=6.0
+easydict>=1.10
+
+# ==========================================
+# Progress Bars
+# ==========================================
+tqdm>=4.64.0
+
+# ==========================================
+# Deep Learning Utilities
+# ==========================================
+# For FLANN-based matching in perspective transform
+pyflann-py3>=0.1.0
+
+# ==========================================
+# Optional: GPU Acceleration
+# ==========================================
+# If you have NVIDIA GPU, install CUDA version of torch:
+# py -m pip uninstall torch torchvision
+# py -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# ==========================================
+# Development Tools (Optional)
+# ==========================================
+# pytest>=7.0.0
+# black>=22.0.0
+# flake8>=5.0.0
