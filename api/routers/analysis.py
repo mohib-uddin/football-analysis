@@ -252,9 +252,9 @@ async def visualize_video(
         
         output_path_obj = Path(output_file)
         
-    return {
+        return {
             "message": "Video visualization complete",
-        "video_id": video_id,
+            "video_id": video_id,
             "original_video": str(original_path),
             "visualized_video": output_file,
             "output_path": output_file,

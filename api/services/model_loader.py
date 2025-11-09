@@ -195,12 +195,12 @@ class ModelLoader:
                 path_added = True
             
             try:
-            from elements.yolo import YOLO
-            self.yolo_detector = YOLO(
-                model_path=str(model_path),
-                conf_thres=0.4,
-                iou_thres=0.5
-            )
+                from elements.yolo import YOLO
+                self.yolo_detector = YOLO(
+                    model_path=str(model_path),
+                    conf_thres=0.4,
+                    iou_thres=0.5
+                )
             finally:
                 # Remove path immediately after import to prevent main.py discovery
                 if path_added and birds_eye_view_path in sys.path:
@@ -266,8 +266,8 @@ class ModelLoader:
             
             try:
                 try:
-            from elements.deep_sort import DEEPSORT
-            self.deep_sort_tracker = DEEPSORT(
+                    from elements.deep_sort import DEEPSORT
+                    self.deep_sort_tracker = DEEPSORT(
                         deepsort_config=str(deepsort_config)
                     )
                     logger.info("✓ DeepSORT tracker loaded successfully")
@@ -296,8 +296,8 @@ class ModelLoader:
             
             try:
                 try:
-            from elements.perspective_transform import Perspective_Transform
-            self.perspective_transform = Perspective_Transform()
+                    from elements.perspective_transform import Perspective_Transform
+                    self.perspective_transform = Perspective_Transform()
                     logger.info("✓ Perspective Transform loaded successfully")
                 except ImportError as e:
                     if "FLANN" in str(e) or "pyflann" in str(e):

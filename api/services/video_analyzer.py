@@ -143,7 +143,7 @@ class VideoAnalyzer:
             # Detect objects in frame
             tracking_outputs = None
             if self.detector:
-            detections = self.detector.detect(frame)
+                detections = self.detector.detect(frame)
             
                 # Track players - this returns track_id for each player
                 if track_players and self.tracker:
@@ -171,8 +171,8 @@ class VideoAnalyzer:
                         y_min=bbox_coords[1],
                         x_max=bbox_coords[2],
                         y_max=bbox_coords[3]
-                            )
-                            
+                    )
+                    
                     # Find matching track_id
                     object_id = -1
                     if track_players and tracking_outputs is not None and len(tracking_outputs) > 0:
@@ -207,36 +207,36 @@ class VideoAnalyzer:
                                         else:
                                             # Use most common color for this player
                                             team_color = player_colors[object_id]
-                except Exception as e:
+                        except Exception as e:
                             logger.debug(f"Color detection failed for player: {e}")
                 
                 obj = DetectedObject(
-                        object_id=object_id,
+                    object_id=object_id,
                     label=det['label'],
                     bbox=bbox,
                     confidence=float(det['score']),
-                        team_color=team_color
+                    team_color=team_color
                 )
                 detected_objects.append(obj)
-                    
-                    # Collect player positions for formation detection
-                    if det['label'] == 'player':
-                        center_x = (bbox_coords[0] + bbox_coords[2]) / 2
-                        center_y = (bbox_coords[1] + bbox_coords[3]) / 2
-                        player_positions.append({
-                            'x': center_x,
-                            'y': center_y,
-                            'team_color': team_color,
-                            'track_id': object_id
-                        })
+                
+                # Collect player positions for formation detection
+                if det['label'] == 'player':
+                    center_x = (bbox_coords[0] + bbox_coords[2]) / 2
+                    center_y = (bbox_coords[1] + bbox_coords[3]) / 2
+                    player_positions.append({
+                        'x': center_x,
+                        'y': center_y,
+                        'team_color': team_color,
+                        'track_id': object_id
+                    })
             
             # Count players and check for ball
             player_count = sum(1 for obj in detected_objects if obj.label == 'player')
             ball_detected = any(obj.label == 'ball' for obj in detected_objects)
-                ball_position = self._get_ball_position(detected_objects)
-                
-                # Detect formation
-                formation = self._detect_formation(player_positions) if player_count >= 6 else None
+            ball_position = self._get_ball_position(detected_objects)
+            
+            # Detect formation
+            formation = self._detect_formation(player_positions) if player_count >= 6 else None
             
             # Store frame analysis
             if analyze_frames:
@@ -255,9 +255,9 @@ class VideoAnalyzer:
                 'timestamp': timestamp,
                 'player_count': player_count,
                 'ball_detected': ball_detected,
-                    'ball_position': ball_position,
-                    'formation': formation,
-                    'detected_objects': detected_objects  # For key events detection
+                'ball_position': ball_position,
+                'formation': formation,
+                'detected_objects': detected_objects  # For key events detection
             })
             
             frame_num += 1

@@ -168,9 +168,9 @@ $RECYCLE.BIN/
 *.onnx
 
 # Model directories (if large)
-models/
+
 checkpoints/
-saved_models/
+
 
 # ==========================================
 # Video Files (Large - DO NOT COMMIT)

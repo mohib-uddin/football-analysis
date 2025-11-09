@@ -32,7 +32,7 @@ torchvision>=0.15.0
 # ==========================================
 # Scientific Computing
 # ==========================================
-numpy==1.23.5  # Pin to 1.23.5 for compatibility with np.float and np.int aliases
+numpy>=1.24.0  # Updated for Python 3.12+ (distutils removed)
 scipy>=1.7.0
 Pillow>=9.0.0
 
