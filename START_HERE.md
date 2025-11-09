@@ -1,23 +1,25 @@
 # 🚀 FieldCoachAI API - START HERE
 
-**Status:** ✅ PRODUCTION READY FOR FRONTEND INTEGRATION
+**Status:** ✅ BACKEND READY - SETUP COMPLETE
+
+**Last Updated:** November 10, 2025
 
 ---
 
 ## ✅ What's Complete
 
-Your FastAPI backend is 100% ready with all core AI business logic:
+Your FastAPI backend is ready with all core AI business logic:
 
 ### Core Features
 - ✅ **AI Grading System** - OpenAI GPT-4o powered player grading
 - ✅ **Play Segmentation** - Automatic play detection from video
 - ✅ **Video Analysis** - YOLOv5 + DeepSORT for player tracking
 - ✅ **Coaching Q&A** - AI-powered coaching assistance
-- ✅ **Position-Specific Grading** - 10 positions with custom criteria
+- ✅ **Position-Specific Grading** - 11 positions with custom criteria
 - ✅ **Complete API Documentation** - Swagger + ReDoc
 - ✅ **CORS Support** - Ready for frontend integration
 - ✅ **Error Handling** - Robust validation and error responses
-- ✅ **Production-Ready Code** - Clean, documented, tested
+- ✅ **Pydantic Models** - All schemas created and validated
 
 ---
 
@@ -65,22 +67,34 @@ footballanalysis-main/
 
 ---
 
-## 🎯 Quick Start (3 Steps)
+## 🎯 Quick Start (4 Steps)
 
-### 1. Install Dependencies
+### 1. Install Dependencies (Using UV - Recommended)
 ```bash
-# Option A: Full installation (includes CV libraries)
-py -m pip install -r requirements-api.txt
+# Install UV package manager (if not installed)
+pip install uv
 
-# Option B: Minimal (for grading only, no video analysis)
-py -m pip install -r requirements-api-minimal.txt
+# Install minimal dependencies (for grading only)
+uv add --requirements requirements-api-minimal.txt
+
+# OR install full dependencies (includes CV libraries - large download)
+uv add --requirements requirements-api.txt
 ```
 
-**Note:** CV libraries (torch, torchvision, opencv) are large downloads. If you only need AI grading, use Option B.
+**Alternative (Using pip):**
+```bash
+# Minimal installation
+py -m pip install -r requirements-api-minimal.txt
+
+# OR full installation
+py -m pip install -r requirements-api.txt
+```
+
+**Note:** CV libraries (torch, torchvision, opencv) are large downloads (~2GB). If you only need AI grading, use minimal installation.
 
 ### 2. Configure API Key
 ```bash
-# Edit .env file
+# Create or edit .env file in project root
 OPENAI_API_KEY=your-openai-key-here
 ```
 
@@ -88,14 +102,22 @@ Get your OpenAI key from: https://platform.openai.com/api-keys
 
 ### 3. Start API
 ```bash
+# Navigate to api directory
 cd api
-py main.py
+
+# Start with UV (recommended)
+uv run main.py
+
+# OR start with Python directly
+python main.py
 ```
 
+### 4. Verify API is Running
 API will be available at:
 - **API**: http://localhost:8000
-- **Swagger Docs**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
+- **Swagger Docs**: http://localhost:8000/docs (Interactive API testing)
+- **ReDoc**: http://localhost:8000/redoc (Clean documentation)
+- **Health Check**: http://localhost:8000/api/v1/health
 
 ---
 
@@ -252,7 +274,7 @@ BALL_MOVEMENT_THRESHOLD=50.0
 ```
 
 ### Supported Positions
-QB, RB, WR, TE, OL, DL, LB, DB, K, P
+QB, RB, WR, TE, OL, DL, LB, DB, K, P, LS, ATH, UNKNOWN
 
 ### Grading Criteria (Examples)
 - **QB**: arm_strength, accuracy, decision_making, pocket_presence, footwork
@@ -267,11 +289,24 @@ QB, RB, WR, TE, OL, DL, LB, DB, K, P
 
 ### API won't start
 ```bash
-# Check Python version (need 3.8+)
+# Check Python version (need 3.10+, tested on 3.12)
 py --version
 
-# Reinstall dependencies
+# Reinstall dependencies with UV
+uv add --requirements requirements-api-minimal.txt
+
+# OR with pip
 py -m pip install -r requirements-api-minimal.txt
+```
+
+### "Attribute 'app' not found" error
+```bash
+# Use uvicorn directly instead of python main.py
+cd api
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+# OR with uv
+uv run uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### OpenAI not working
